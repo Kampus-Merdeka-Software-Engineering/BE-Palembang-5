@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kampus Merdeka</title>
+  </head>
+  <body>
+    <div id="product-list"></div>
+
+    <script>
+      const loadProductsById = (id) => {
+        fetch(`/products/${id}`), {
+          method: "GET",
+        }
+          .then((response) => response.json())
+          .then((response) => {
+            console.log({ response });
+
+            const { name, category, price, description } = response.data;
+            document.getElementById("name").innerText = name;
+            document.getElementById("category").innerText = category;
+            document.getElementById("price").innerText = price;
+            document.getElementById("description").innerText = description;
+          });
+      };
+
+      const loadAllProducts = () => {
+        fetch("/products", { method: "GET" })
+          .then((response) => response.json())
+          .then((response) => {
+            console.log({ response });
+
+            response.data.forEach((item) => {
+              document.getElementById("product-list").innerHTML += `
+                <div>
+                  <h3 id="name">${item.name}</h3>
+                  <p id="category">${item.category}</p>
+                  <p id="price">${item.price}</p>
+                  <p id="description">${item.description}</p>
+                </div>
+              `;
+            });
+          });
+      };
+      
+
+      loadAllProducts();
+    </script>
+  </body>
+</html>
