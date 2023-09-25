@@ -3,6 +3,7 @@ import express from "express";
 import bodyParser from "body-parser";
 import productsRouter from "./src/routes/products.js";
 
+
 const app = express();
 const port = 8080;
 
