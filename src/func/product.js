@@ -1,9 +1,11 @@
 import { Product } from '../models/index.js';
 
-export const createProduct = async (name, price, category, description, image) => {
+export const createProduct = async (id, name, price, diskon, category, description, image) => {
     return await Product.create({
+        id,
         name,
         price,
+        diskon,
         category,
         description,
         image
@@ -11,37 +13,35 @@ export const createProduct = async (name, price, category, description, image) =
 };
 
 export const findAll = async () => {
-    return Product.findAll({
-        attributes: ['name', 'price', 'category', 'description', 'image']
+    return await Product.findAll({
+        attributes: ['id', 'name', 'price', 'diskon', 'category', 'description', 'image']
     });
 };
 
 export const findById = async (id) => {
+    console.log(id);
     return await Product.findOne({
         where: { id: id },
-        attributes: ['name', 'price', 'category', 'description', 'image']
+        attributes: ['id', 'name', 'price', 'diskon', 'category', 'description', 'image']
     });
 };
 
 export const findByCategory = async (category) => {
-    return await Product.findOne({
+    return await Product.findAll({
         where: { category: category },
-        attributes: ['name', 'price', 'category', 'description', 'image']
+        attributes: ['id', 'name', 'price', 'diskon', 'category', 'description', 'image']
     });
 };
 
 export const findByName = async (name) => {
     let reg = new RegExp(name, 'ig');
     let all = await Product.findAll();
-    let founded = '';
+    let founded = [];
     all.map((el) => {
-        if (reg.test(el.name)) founded += el.name;
+        if (reg.test(el.name)) founded.push({ id: el.id, name: el.name, price: el.price, diskon: el.diskon, category: el.category, description: el.description, image: el.image });
     });
 
-    return await Product.findOne({
-        where: { name: founded },
-        attributes: ['name', 'price', 'category', 'description', 'image']
-    });
+    return founded;
 };
 
 export const update = async (id, obj) => {

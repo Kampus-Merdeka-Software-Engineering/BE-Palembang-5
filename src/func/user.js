@@ -1,8 +1,10 @@
 import { User, Cart } from '../models/index.js';
 import { createCart } from './cart.js';
-export const createUser = async (nama, alamat, nomor_hp, email, password) => {
+export const createUser = async (id, nama, saldo, alamat, nomor_hp, email, password) => {
     let user = await User.create({
+        id,
         nama,
+        saldo,
         alamat,
         nomor_hp,
         email,
@@ -15,14 +17,14 @@ export const createUser = async (nama, alamat, nomor_hp, email, password) => {
 
 export const getAll = async () => {
     return await User.findAll({
-        attributes: ['nama', 'alamat', 'nomor_hp', 'email']
+        attributes: ['id', 'nama', 'saldo', 'alamat', 'nomor_hp', 'email']
     });
 };
 
 export const getById = async (id) => {
     return await User.findOne({
         where: { id },
-        attributes: ['nama', 'alamat', 'nomor_hp', 'email']
+        attributes: ['nama', 'saldo', 'alamat', 'nomor_hp', 'email']
     });
 };
 export const updated = async (id, obj) => {

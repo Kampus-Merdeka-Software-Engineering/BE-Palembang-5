@@ -5,12 +5,15 @@ const User = sqls.define(
     'User',
     {
         id: {
-            type: DataTypes.INTEGER,
-            autoIncrement: true,
+            type: DataTypes.STRING,
             primaryKey: true
         },
         nama: {
             type: DataTypes.STRING,
+            allowNull: false
+        },
+        saldo: {
+            type: DataTypes.INTEGER,
             allowNull: false
         },
         alamat: {
@@ -27,6 +30,7 @@ const User = sqls.define(
         },
         password: {
             type: DataTypes.STRING,
+            allowNull: false,
             get() {
                 return '*********';
             }

@@ -1,13 +1,11 @@
 import { DataTypes } from 'sequelize';
 import sqls from '../config/sequelize.js';
-import Cart from './Cart.js';
 
 const Product = sqls.define(
     'Product',
     {
         id: {
-            type: DataTypes.INTEGER,
-            autoIncrement: true,
+            type: DataTypes.STRING,
             primaryKey: true
         },
         name: {
@@ -18,6 +16,10 @@ const Product = sqls.define(
             type: DataTypes.INTEGER,
             allowNull: false
         },
+        diskon: {
+            type: DataTypes.INTEGER,
+            allowNull: true
+        },
         category: {
             type: DataTypes.STRING,
             allowNull: false
@@ -27,7 +29,7 @@ const Product = sqls.define(
             allowNull: false
         },
         image: {
-            type: DataTypes.STRING,
+            type: DataTypes.TEXT,
             allowNull: true
         }
     },
@@ -35,7 +37,5 @@ const Product = sqls.define(
         timestamps: true
     }
 );
-
-Cart.hasMany(Product);
 
 export default Product;

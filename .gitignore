@@ -3,7 +3,7 @@ node_modules
 .prettierrc
 .vscode
 .rest
-
+product.js
 data.js
 buy_techdb.sql
 convert.js

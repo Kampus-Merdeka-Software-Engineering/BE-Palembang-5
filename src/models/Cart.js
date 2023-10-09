@@ -4,12 +4,12 @@ import User from './User.js';
 
 const Cart = sqls.define('Cart', {
     id: {
-        type: DataTypes.INTEGER,
-        autoIncrement: true,
+        type: DataTypes.STRING,
         primaryKey: true
     },
-    product_id: {
-        type: DataTypes.STRING
+    product: {
+        type: DataTypes.JSON,
+        allowNull: true
     },
     tgl_transaksi: {
         type: DataTypes.DATE
