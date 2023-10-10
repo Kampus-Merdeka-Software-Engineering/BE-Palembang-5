@@ -1,5 +1,13 @@
 node_modules
 .env
-
+.prettierrc
+.vscode
+.rest
+product.js
+data.js
 buy_techdb.sql
-
+convert.js
+src/vendor/convert.js
+src/vendor/output.txt
+src/controllers/a.js
+src/controllers/products.js

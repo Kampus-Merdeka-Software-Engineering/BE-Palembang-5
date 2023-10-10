@@ -14,6 +14,8 @@ export const updateCart = async (id, obj) => {
 };
 
 export const getCartById = async (id) => {
+    let ids = await Cart.findOne({ where: { id: id } });
+    if (ids) return ids;
     return await Cart.findOne({
         where: { UserId: id }
     });

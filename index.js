@@ -37,12 +37,12 @@ app.use((req, res, next) => {
     next();
 });
 
-app.use(express.static('public'));
+app.use('/vendor', express.static('public'));
 
-app.use('/products', productsRouter);
-app.use('/users', usersRoutes);
-app.use('/cart', cartRoutes);
-app.use('/orders', pesanRoutes);
+app.use('/api/products', productsRouter);
+app.use('/api/users', usersRoutes);
+app.use('/api/cart', cartRoutes);
+app.use('/api/orders', pesanRoutes);
 
 app.listen(port, () => {
     console.log(`Server Berjalan di port ${port}`);

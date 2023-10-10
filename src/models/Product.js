@@ -18,7 +18,7 @@ const Product = sqls.define(
         },
         diskon: {
             type: DataTypes.INTEGER,
-            allowNull: true
+            allowNull: false
         },
         category: {
             type: DataTypes.STRING,

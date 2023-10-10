@@ -7,12 +7,16 @@ const Pesanan = sqls.define('Pesanan', {
         primaryKey: true
     },
     product_id: {
-        type: DataTypes.STRING,
-        allowNull: true
+        type: DataTypes.JSON,
+        allowNull: false
     },
     user_id: {
         type: DataTypes.STRING,
-        allowNull: true
+        allowNull: false
+    },
+    total: {
+        type: DataTypes.INTEGER,
+        allowNull: false
     },
     verified: {
         type: DataTypes.BOOLEAN,
